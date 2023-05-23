@@ -27,11 +27,13 @@ def movements ():
 def movement (id):
     conn = sqlite3.connect("Art.db")
     cur = conn.cursor()
-    cur.execute("SELECT name,desc FROM Movements WHERE id=?",(id,))
+    cur.execute("SELECT name,description FROM Movements WHERE id=?",(id,))
     mov = cur.fetchone()
-    cur.execute("SELECT name, image FROM Work WHERE mid=?",(id,))
+    cur.execute("SELECT aid, name FROM Work WHERE mid=?",(id,))
     works = cur.fetchall()
-    return render_template("movement.html", movement=mov, works=works)
+    print(mov)
+    print(works)
+    return render_template("movement.html", name=mov[0] , description=mov[1], results=works)
 
 @app.route ("/work/<int:id>")
 def work (id):
