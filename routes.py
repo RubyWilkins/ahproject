@@ -38,12 +38,11 @@ def movement (id):
 @app.route ("/work/<int:id>")
 def work (id):
     conn = sqlite3.connect("Art.db")
-    cur = conn.cursor()
-    cur.execute("SELECT name,desc,image, rid FROM Work WHERE id=?",(id,))
+    cur = conn. cursor()
+    cur.execute("SELECT name, description FROM Work WHERE aid=?",(id,))
     work = cur.fetchone()
-    cur.execute("SELECT name, desc FROM Artist WHERE id=?",(work[3],))
-    artist = cur.fetchone()
-    return render_template("work.html",work=work, artist=artist)
+    print("Hello World",work)
+    return render_template ("movement.html", name=work[0], description=work[1])
 
 if __name__ == "__main__":
     app.run(debug=True)
