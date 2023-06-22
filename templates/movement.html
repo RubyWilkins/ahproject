@@ -4,7 +4,9 @@
 <p>{{description}}</p>
 {% for item in results %}
     <h2><a href= "/work/{{ item[0]}}">
-        {{ item[1]}}
+    {{ item[1]}}
     </a></h2>
+    <p></p>
+    <img src = "/static/images/{{ item[2]}}" width="500">
     {% endfor %}
 {%endblock%}

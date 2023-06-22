@@ -29,7 +29,7 @@ def movement (id):
     cur = conn.cursor()
     cur.execute("SELECT name,description FROM Movements WHERE id=?",(id,))
     mov = cur.fetchone()
-    cur.execute("SELECT aid, name FROM Work WHERE mid=?",(id,))
+    cur.execute("SELECT aid, name, image FROM Work WHERE mid=?",(id,))
     works = cur.fetchall()
     print(mov)
     print(works)
