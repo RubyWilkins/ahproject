@@ -3,7 +3,7 @@ body {
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-
+/*this is the css for the home page image*/
 
 .home{
     background-image: url("/static/images/background.jpg");
