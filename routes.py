@@ -52,26 +52,32 @@ def work (id):
 
 #this is the code for the search 
 
-
 from flask import request
 
-@app.route("/search/<string:strings>")
-def search(strings=None):
-    if strings is None:
-        strings = ""
+@app.route("/search")
+def search():
+    query = request.args.get('query', type = str)
+
+    if not query:
+        return render_template ("home.html")
 
     conn = sqlite3.connect("Art.db")
     cur = conn.cursor()
 
     # Use a parameterized query to avoid SQL injection
-    cur.execute(f"SELECT name FROM Work WHERE name LIKE ?", ('%' + strings + '%',))
+    cur.execute(f"SELECT aid, name FROM Work WHERE name LIKE ?", ('%' + query + '%',))
+    
 
     results = cur.fetchall()
+
+    cur.execute(f"SELECT id, name from Artist WHERE name LIKE ?", ('%' + query + '%',))
+
+
 
     cur.close()
     conn.close()
 
-    return render_template("search.html", search_query=strings, results=results)
+    return render_template("search.html", search_query=query, results=results)
 
 @app.errorhandler(404)
 def page_not_found(e):

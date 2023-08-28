@@ -8,13 +8,13 @@
     <h1>Search Results for "{{ search_query }}"</h1>
 
     {% if results %}
-        <ul>
+        <ol>
             {% for result in results %}
-                <li>{{ result[0] }}</li>
+                <li> <h2><a href= "/work/{{ result[0]}}">   {{ result[1]}}</a></li>
             {% endfor %}
-        </ul>
+        </ol>
     {% else %}
-        <p>No results found.</p>
+        <p>No results found. Check your spelling and try again. </p>
     {% endif %}
 </body>
 </html>    
