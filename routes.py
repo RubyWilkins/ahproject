@@ -66,18 +66,20 @@ def search():
 
     # Use a parameterized query to avoid SQL injection
     cur.execute(f"SELECT aid, name FROM Work WHERE name LIKE ?", ('%' + query + '%',))
-    
+    wresults = cur.fetchall()
 
-    results = cur.fetchall()
+    cur.execute(f"SELECT aid, name FROM Work WHERE rid IN (SELECT id FROM Artist WHERE name LIKE ?)", ('%' + query + '%',))
+    aresults = cur.fetchall()
+    results = wresults + aresults
 
-    cur.execute(f"SELECT id, name from Artist WHERE name LIKE ?", ('%' + query + '%',))
-
-
+    # there can be duplicates because a work can appear in wresults and aresults, so this removes them
+    results = list(set(results))
 
     cur.close()
     conn.close()
 
     return render_template("search.html", search_query=query, results=results)
+
 
 @app.errorhandler(404)
 def page_not_found(e):
