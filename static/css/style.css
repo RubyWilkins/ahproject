@@ -42,11 +42,10 @@ a:link {
 
   /* centers the main text*/
 
-  main {
-
+  p, h2 {
     text-align: center;
+  }
     
-    }
 
     * {box-sizing:border-box}
 
@@ -69,7 +68,7 @@ a:link {
       top: 50%;
       width: auto;
       margin-top: -22px;
-      padding: 16px;
+      padding: 6px;
       color: white;
       font-weight: bold;
       font-size: 18px;
