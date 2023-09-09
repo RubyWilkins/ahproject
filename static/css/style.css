@@ -7,6 +7,10 @@ body {
     
 }
 
+main {
+  background-color:aqua
+  
+}
 /*this is the css for the home page image*/
 
 
@@ -99,7 +103,7 @@ a:link {
       text-align: center;
     }
     
-    /* Number text (1/3 etc) */
+    /* Number text (1/4 etc) */
     .numbertext {
       color: #f2f2f2;
       font-size: 12px;
