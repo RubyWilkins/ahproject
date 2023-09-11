@@ -2,4 +2,6 @@
 {% block content %}
 <h2>{{ name}}</h2>
 <p>{{description}}</p>
+<!-- this gets the image corresponding with the work from the database-->
+    <img src = "/static/images/{{ item}}" width="300" class="center">
 {%endblock%}

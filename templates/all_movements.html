@@ -1,12 +1,21 @@
 {%extends "layout.html"%}
 {%block content%}
 <h2>Movements</h2>
+
+<!--puts everything in a grid-->
+<div class="grid-container">
+
 {% for item in results %}
+    <div class="grid-item">
+    <!--gets the movement-->
     <h2><a href= "/movement/{{ item[0]}}" class="center">
         {{ item[1]}}
     </a></h2>
     <p>{{item [2]}}</p>
+    <!--this gets the image corresponding to the movement and sizes it-->
     <img src = "/static/images/{{ item[3]}}" width="300" class="center">
+    </div>
     {% endfor %}
+</div>
 {%endblock%}
 

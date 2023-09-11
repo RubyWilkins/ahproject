@@ -10,10 +10,12 @@
     {% if results %}
         <ol>
             {% for result in results %}
+            <!-- Generates a link to a result and also displays te results title-->
                 <li> <h2><a href= "/work/{{ result[0]}}">   {{ result[1]}}</a></li>
             {% endfor %}
         </ol>
     {% else %}
+    <!--this is for if the user types in something not in the database or can't spell-->
         <p>No results found. Check your spelling and try again. </p>
     {% endif %}
 </body>

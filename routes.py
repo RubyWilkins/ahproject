@@ -25,14 +25,16 @@ def movements ():
     results = cur.fetchall()
     return render_template("all_movements.html", results = results)
 
-#this displays the artworks in a movement
+#this displays the all of artworks in a specific movement
 
 @app.route ("/movement/<int:id>")
 def movement (id):
     conn = sqlite3.connect("Art.db")
     cur = conn.cursor()
+    #the id is specifying which movement
     cur.execute("SELECT name,description FROM Movements WHERE id=?",(id,))
     mov = cur.fetchone()
+    #the mid is the movement id
     cur.execute("SELECT aid, name, image FROM Work WHERE mid=?",(id,))
     works = cur.fetchall()
     print(mov)
@@ -45,10 +47,11 @@ def movement (id):
 def work (id):
     conn = sqlite3.connect("Art.db")
     cur = conn. cursor()
-    cur.execute("SELECT name, description FROM Work WHERE aid=?",(id,))
+    #the aid is the artwork's id
+    cur.execute("SELECT name, description,image FROM Work WHERE aid=?",(id,))
     work = cur.fetchone()
     print("Hello World",work)
-    return render_template ("movement.html", name=work[0], description=work[1])
+    return render_template ("work.html", name=work[0], description=work[1], item=work[2])
 
 #this is the code for the search 
 
@@ -72,7 +75,7 @@ def search():
     aresults = cur.fetchall()
     results = wresults + aresults
 
-    # there can be duplicates because a work can appear in wresults and aresults, so this removes them
+    # there can be duplicates because a work can appear in wresults and aresults, so i added this to remove them
     results = list(set(results))
 
     cur.close()
@@ -80,6 +83,7 @@ def search():
 
     return render_template("search.html", search_query=query, results=results)
 
+#this is the code for the 404 page, so the website doesn't break if anyone types something weird in the url bar thing
 
 @app.errorhandler(404)
 def page_not_found(e):

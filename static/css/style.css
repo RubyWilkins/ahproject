@@ -7,39 +7,30 @@ body {
     
 }
 
-main {
-  background-color:aqua
-  
-}
-/*this is the css for the home page image*/
-
-
-
 /* this is the css to center all of the images*/
 
 .center {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    height: 20%;
   }
-
-/* unvisited link */
+  
+/* unvisited link colour */
 a:link {
     color: rgb(76, 85, 132);
   }
   
-  /* visited link */
+  /* visited link colour*/
   a:visited {
     color: rgb(76, 85, 132);
   }
   
-  /* mouse over link */
+  /* mouse over link colour*/
   a:hover {
     color: rgb(247, 0, 255);
   }
   
-  /* selected link */
+  /* selected link colour*/
   a:active {
     color: rgb(76, 85, 132);
   }
@@ -53,19 +44,19 @@ a:link {
 
     * {box-sizing:border-box}
 
-    /* Slideshow container */
+    /* slideshow container */
     .slideshow-container {
       max-width: 1000px;
       position: relative;
       margin: auto;
     }
     
-    /* Hide the images by default */
+    /* hide the images by default */
     .mySlides {
       display: none;
     }
     
-    /* Next & previous buttons */
+    /* the next & previous buttons */
     .prev, .next {
       cursor: pointer;
       position: absolute;
@@ -81,18 +72,18 @@ a:link {
       user-select: none;
     }
     
-    /* Position the "next button" to the right */
+    /* position the "next button" to the right */
     .next {
       right: 0;
       border-radius: 3px 0 0 3px;
     }
     
-    /* On hover, add a black background color with a little bit see-through */
+    /* on hover, add a black background colour that's a bit transparent */
     .prev:hover, .next:hover {
       background-color: rgba(0,0,0,0.8);
     }
     
-    /* Caption text */
+    /* caption text */
     .text {
       color: #f2f2f2;
       font-size: 15px;
@@ -103,7 +94,7 @@ a:link {
       text-align: center;
     }
     
-    /* Number text (1/4 etc) */
+    /* the number text (1/4 etc) */
     .numbertext {
       color: #f2f2f2;
       font-size: 12px;
@@ -112,7 +103,7 @@ a:link {
       top: 0;
     }
     
-    /* The dots/bullets/indicators */
+    /* the dots/bullets/indicators */
     .dot {
       cursor: pointer;
       height: 15px;
@@ -128,7 +119,7 @@ a:link {
       background-color: #717171;
     }
     
-    /* Fading animation */
+    /* the fading animation */
     .fade {
       animation-name: fade;
       animation-duration: 1.5s;
@@ -139,4 +130,9 @@ a:link {
       to {opacity: 1}
     }
 
-    
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 10px;
+}

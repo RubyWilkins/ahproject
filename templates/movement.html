@@ -2,11 +2,18 @@
 {%block content%}
 <h2>{{name}}</h2>
 <p>{{description}}</p>
+<!--this grids the works-->
+<div class="grid-container">
 {% for item in results %}
+    <div class="grid-item">
+    <!--selecting the works corresponding to the movement-->
     <h2><a href= "/work/{{ item[0]}}">
     {{ item[1]}}
     </a></h2>
     <p></p>
+    <!--selecting the images-->
     <img src = "/static/images/{{ item[2]}}" width="300" class="center">
+    </div>
     {% endfor %}
+</div>
 {%endblock%}
