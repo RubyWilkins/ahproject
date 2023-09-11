@@ -17,17 +17,17 @@ body {
   
 /* unvisited link colour */
 a:link {
-    color: rgb(76, 85, 132);
+    color: rgb(172, 180, 217);
   }
   
   /* visited link colour*/
   a:visited {
-    color: rgb(76, 85, 132);
+    color: rgb(172, 180, 217);
   }
   
   /* mouse over link colour*/
   a:hover {
-    color: rgb(247, 0, 255);
+    color: rgb(255, 255, 255);
   }
   
   /* selected link colour*/
