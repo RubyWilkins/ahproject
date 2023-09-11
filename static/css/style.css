@@ -133,6 +133,7 @@ a:link {
 
 .grid-container {
   display: grid;
-  grid-template-columns: auto auto auto;
+  /*the 1fr is what makes the columns the same size*/
+  grid-template-columns: 1fr 1fr 1fr;
   padding: 10px;
 }
