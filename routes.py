@@ -75,7 +75,9 @@ def search():
     cur.execute(f"SELECT aid, name FROM Work WHERE name LIKE ?", ('%' + query + '%',))
     wresults = cur.fetchall()
 
-    cur.execute(f"SELECT aid, name FROM Work WHERE rid IN (SELECT id FROM Artist WHERE name LIKE ?)", ('%' + query + '%',))
+    cur.execute(f"SELECT aid, name FROM Work WHERE rid IN \
+                (SELECT id FROM Artist WHERE name LIKE ?)",
+                ('%' + query + '%',))
     aresults = cur.fetchall()
     results = wresults + aresults
 
