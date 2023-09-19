@@ -1,0 +1,17 @@
+{%extends "layout.html"%}
+{%block content%}
+<h2>Artists</h2>
+<!--puts everything in a grid-->
+<div class="grid-container">
+
+    {% for item in results %}
+        <div class="grid-item">
+        <!--gets the artists-->
+        <h2><a href= "/artist/{{ item[0]}}" class="center">
+            {{ item[1]}}
+        </a></h2>
+        <!--<img src = "/static/images/{{ item[2]}}" alt="/work/{{name}}" width="300" class="center">-->
+        </div>
+        {% endfor %}
+    </div>
+    {%endblock%}
