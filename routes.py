@@ -124,8 +124,9 @@ def search():
 # this is the code for the 404 page, so the website doesn't break if anyone types something weird in the url bar thing
 @app.errorhandler(404)
 def page_not_found(e):
-    return render_template('404.html'), 404
+    return render_template('404.html')
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    # listen on all interfaces so I can connect from my phone to test the grid
+    app.run(debug=True, host='0.0.0.0')
