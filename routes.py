@@ -35,6 +35,10 @@ def movements():
 def movement(id):
     conn = sqlite3.connect("Art.db")
     cur = conn.cursor()
+    # sqlite can't handle really long integers so i added this
+    # to prevent the website from breaking
+    if id > 999:
+        return render_template('404.html')
     # the id is specifying which movement
     cur.execute("SELECT name, description FROM Movements WHERE id=?", (id,))
     mov = cur.fetchone()
@@ -53,6 +57,10 @@ def movement(id):
 def work(id):
     conn = sqlite3.connect("Art.db")
     cur = conn.cursor()
+    # sqlite can't handle really long integers so i added this
+    # to prevent the website from breaking
+    if id > 999:
+        return render_template('404.html')
     # the aid is the artwork's id
     cur.execute("SELECT name, description,image FROM Work WHERE aid=?", (id,))
     work = cur.fetchone()
@@ -67,7 +75,7 @@ def work(id):
 def artists():
     conn = sqlite3.connect("Art.db")
     cur = conn.cursor()
-    cur.execute("SELECT id, name FROM Artist")
+    cur.execute("SELECT id, name, image FROM Artist")
     results = cur.fetchall()
     return render_template("all_artists.html", results=results)
 
@@ -77,11 +85,19 @@ def artists():
 def artist(id):
     conn = sqlite3.connect("Art.db")
     cur = conn.cursor()
+    # sqlite can't handle really long integers so i added this
+    # to prevent the website from breaking
+    if id > 999:
+        return render_template('404.html')
     # the id is specifying which artist
     cur.execute("SELECT name, description FROM Artist WHERE id=?", (id,))
     artist = cur.fetchone()
     # if the aid doesn't exist return 404
     if not artist:
+        return render_template('404.html')
+    # sqlite can't handle really long integers so i added this
+    # to prevent the website from breaking
+    if id > 999:
         return render_template('404.html')
     # the rid is the artist id
     cur.execute("SELECT aid, name, image FROM Work WHERE rid=?", (id,))
@@ -129,4 +145,4 @@ def page_not_found(e):
 
 if __name__ == "__main__":
     # listen on all interfaces so I can connect from my phone to test the grid
-    app.run(debug=True, host='0.0.0.0')
+    app.run(debug=True) #  , host='0.0.0.0')
