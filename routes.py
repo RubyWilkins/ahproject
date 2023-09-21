@@ -136,7 +136,7 @@ def search():
     return render_template("search.html", search_query=query, results=results)
 
 
-# this is the code for the 404 page, so the website doesn't break if anyone 
+# this is the code for the 404 page, so the website doesn't break if anyone
 # types something weird in the url bar thing
 @app.errorhandler(404)
 def page_not_found(e):
