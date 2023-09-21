@@ -48,8 +48,10 @@ def movement(id):
     # the mid is the movement id
     cur.execute("SELECT aid, name, image FROM Work WHERE mid=?", (id,))
     works = cur.fetchall()
-    # if there were no works for this movement works will be [] which isn't an error
-    return render_template("movement.html", name=mov[0], description=mov[1], results=works)
+    # if there were no works, works will be [] which isn't an error
+    return render_template(
+        "movement.html", name=mov[0], description=mov[1], results=works
+    )
 
 
 # this code displays the artwork
@@ -67,7 +69,9 @@ def work(id):
     # if the aid doesn't exist return 404
     if not work:
         return render_template('404.html')
-    return render_template("work.html", name=work[0], description=work[1], item=work[2])
+    return render_template(
+        "work.html", name=work[0], description=work[1], item=work[2]
+    )
 
 
 # this is the code for the artists
@@ -102,8 +106,11 @@ def artist(id):
     # the rid is the artist id
     cur.execute("SELECT aid, name, image FROM Work WHERE rid=?", (id,))
     works = cur.fetchall()
-    # if there were no works for this artist works will be [] which isn't an error
-    return render_template("artist.html", name=artist[0], description=artist[1], results=works)
+    # if there were no works for this artist works will be [] which isn't an
+    # error
+    return render_template(
+        "artist.html", name=artist[0], description=artist[1], results=works
+    )
 
 
 # this is the code for the search
@@ -118,7 +125,9 @@ def search():
     cur = conn.cursor()
 
     # Use a parameterized query to avoid SQL injection
-    cur.execute("SELECT aid, name FROM Work WHERE name LIKE ?", ('%' + query + '%',))
+    cur.execute(
+        "SELECT aid, name FROM Work WHERE name LIKE ?", ('%' + query + '%',)
+    )
     wresults = cur.fetchall()
 
     cur.execute("SELECT aid, name FROM Work WHERE rid IN \
@@ -137,7 +146,8 @@ def search():
     return render_template("search.html", search_query=query, results=results)
 
 
-# this is the code for the 404 page, so the website doesn't break if anyone types something weird in the url bar thing
+# this is the code for the 404 page, so the website doesn't break if anyone 
+# types something weird in the url bar thing
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html')
@@ -145,4 +155,4 @@ def page_not_found(e):
 
 if __name__ == "__main__":
     # listen on all interfaces so I can connect from my phone to test the grid
-    app.run(debug=True) #  , host='0.0.0.0')
+    app.run(debug=True)  # , host='0.0.0.0')
